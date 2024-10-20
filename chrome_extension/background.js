@@ -76,6 +76,17 @@ async function sendToOpenAI(content) {
     }),
   });
 
+  if (!response.ok) {
+    const errorMessage = `OpenAI API error: ${response.status} - ${response.statusText}`;
+    throw new Error(errorMessage);
+  }
+  
   const data = await response.json();
+  
+  // Check if choices array exists and has valid data
+  if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+    throw new Error('Invalid response structure from OpenAI API');
+  }
+  
   return data.choices[0].message.content.trim();
 }
