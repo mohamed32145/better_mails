@@ -46,6 +46,7 @@ model.fit(X_train, y_train, epochs=5, batch_size=32)
 
 
 # Save the model and tokenizer
+model_save_path = 'backend/app/data/email_classifier_model.h5'
 model.save('email_classifier_model.h5')
 
 # Save the tokenizer as well using pickle

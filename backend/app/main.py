@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-
+model_path = 'backend/app/data/email_classifier_model.h5'
 model = load_model('email_classifier_model.h5')
 
 # Load the tokenizer
